@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="/usr/bin/fpc" Date="1526926378"/>
+  <Params Value=" -MObjFPC -Scgi -Cg -O1 -g -gl -l -vewnhibq -Fu/home/jull/Документы/fpspreadsheet-1.10.1/source/export -Fu/usr/share/lazarus/1.8.4/packager/units/x86_64-linux -Fu/usr/share/lazarus/1.8.4/components/lazutils/lib/x86_64-linux -Fu/home/jull/Документы/fpspreadsheet-1.10.1/source/common/lib/x86_64-linux -Fu/usr/share/lazarus/1.8.4/lcl/units/x86_64-linux -Fu/usr/share/lazarus/1.8.4/lcl/units/x86_64-linux/gtk2 -Fu/usr/share/lazarus/1.8.4/components/lazcontrols/lib/x86_64-linux/gtk2 -Fu/usr/share/lazarus/1.8.4/components/ideintf/units/x86_64-linux/gtk2 -Fu/usr/share/lazarus/1.8.4/components/rtticontrols/lib/x86_64-linux/gtk2 -Fu/usr/share/lazarus/1.8.4/components/dbexport/lib/x86_64-linux -Fu/home/jull/Документы/fpspreadsheet-1.10.1/ -FU/home/jull/Документы/fpspreadsheet-1.10.1/source/export/lib/x86_64-linux/ -dLCL -dLCLgtk2 laz_fpspreadsheetexport_visual.pas"/>
+</CONFIG>
