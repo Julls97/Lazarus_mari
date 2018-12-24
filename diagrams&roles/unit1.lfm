@@ -1,0 +1,294 @@
+object Form1: TForm1
+  Left = 505
+  Height = 566
+  Top = 155
+  Width = 758
+  Caption = 'Form1'
+  ClientHeight = 566
+  ClientWidth = 758
+  LCLVersion = '1.8.4.0'
+  object Chart1: TChart
+    Left = 384
+    Height = 304
+    Top = 0
+    Width = 368
+    AxisList = <    
+      item
+        Marks.LabelBrush.Style = bsClear
+        Minors = <>
+        Title.LabelFont.Color = clMedGray
+        Title.LabelFont.Orientation = 900
+        Title.LabelBrush.Color = clFuchsia
+      end    
+      item
+        Alignment = calBottom
+        Marks.LabelBrush.Style = bsClear
+        Minors = <>
+        Title.LabelBrush.Style = bsClear
+      end>
+    BackColor = clInactiveCaptionText
+    Foot.Brush.Color = clBtnFace
+    Foot.Font.Color = clLime
+    Legend.GroupFont.Color = clMedGray
+    Proportional = True
+    Title.Brush.Color = clBtnFace
+    Title.Font.Color = clYellow
+    Title.Text.Strings = (
+      'TAChart'
+    )
+    Title.Visible = True
+    Color = clGrayText
+    object Chart1BarSeries1: TBarSeries
+      Marks.Distance = 5
+      Marks.LabelFont.Color = clBlack
+      Marks.Format = '%2:s'
+      Marks.Style = smsLabel
+      BarBrush.Color = clTeal
+      Source = DbChartSource2
+    end
+  end
+  object Chart2: TChart
+    Left = 0
+    Height = 328
+    Top = 0
+    Width = 360
+    AxisList = <    
+      item
+        Marks.LabelBrush.Style = bsClear
+        Minors = <>
+        Title.LabelFont.Orientation = 900
+        Title.LabelBrush.Style = bsClear
+      end    
+      item
+        Alignment = calBottom
+        Marks.LabelBrush.Style = bsClear
+        Minors = <>
+        Title.LabelBrush.Style = bsClear
+      end>
+    BackColor = clHighlightText
+    Foot.Brush.Color = clBtnFace
+    Foot.Font.Color = clBlue
+    Proportional = True
+    Title.Brush.Color = clMenuHighlight
+    Title.Font.Color = clLime
+    Title.Frame.Color = clMaroon
+    Title.Text.Strings = (
+      'TAChart'
+    )
+    Title.Visible = True
+    Color = clMedGray
+    ParentShowHint = False
+    ShowHint = True
+    object Chart2PieSeries1: TPieSeries
+      Marks.Distance = 10
+      Marks.LabelFont.Color = clBlack
+      Marks.Format = '%2:s'
+      Marks.Style = smsLegend
+      Source = DbChartSource2
+    end
+  end
+  object Chart3: TChart
+    Left = 8
+    Height = 240
+    Top = 336
+    Width = 600
+    AxisList = <    
+      item
+        Marks.LabelBrush.Style = bsClear
+        Minors = <>
+        Title.LabelFont.Orientation = 900
+        Title.LabelBrush.Style = bsClear
+      end    
+      item
+        Alignment = calBottom
+        Marks.LabelBrush.Style = bsClear
+        Minors = <>
+        Title.LabelBrush.Style = bsClear
+      end>
+    BackColor = clWindowText
+    Foot.Brush.Color = clBtnFace
+    Foot.Font.Color = clBlue
+    Proportional = True
+    Title.Brush.Color = clHighlightText
+    Title.Font.Color = clTeal
+    Title.Text.Strings = (
+      'TAChart'
+    )
+    Title.Visible = True
+    Color = clDefault
+    ParentShowHint = False
+    object Chart3LineSeries1: TLineSeries
+      Marks.Margins.Left = 2
+      Marks.Margins.Right = 0
+      Marks.Distance = 10
+      Marks.LabelFont.Color = cl3DDkShadow
+      Marks.Format = '%2:s'
+      Marks.Style = smsLegend
+      ShowPoints = True
+      Source = DbChartSource2
+    end
+  end
+  object PQConnection1: TPQConnection
+    Connected = True
+    LoginPrompt = False
+    DatabaseName = 'bibl'
+    KeepConnection = True
+    Password = 'postgres'
+    Transaction = SQLTransaction1
+    UserName = 'postgres'
+    HostName = 'localhost'
+    left = 160
+    top = 16
+  end
+  object SQLQuery1: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'book_name'
+        DataType = ftString
+        Precision = -1
+        Size = 8192
+      end    
+      item
+        Name = 'author'
+        DataType = ftString
+        Precision = -1
+        Size = 8192
+      end    
+      item
+        Name = 'genre'
+        DataType = ftString
+        Precision = -1
+        Size = 8192
+      end>
+    Active = True
+    Database = PQConnection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'SELECT * FROM books;'
+    )
+    Params = <>
+    left = 56
+    top = 80
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = True
+    Database = PQConnection1
+    left = 58
+    top = 16
+  end
+  object DbChartSource1: TDbChartSource
+    DataSource = DataSource1
+    FieldText = 'book_name'
+    FieldX = 'genre'
+    FieldY = 'id'
+    left = 56
+    top = 152
+  end
+  object DataSource1: TDataSource
+    DataSet = SQLQuery1
+    left = 56
+    top = 224
+  end
+  object SQLQuery2: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'visitor_name'
+        DataType = ftString
+        Precision = -1
+        Size = 8192
+      end    
+      item
+        Name = 'email'
+        DataType = ftString
+        Precision = -1
+        Size = 8192
+      end    
+      item
+        Name = 'phone'
+        DataType = ftInteger
+        Precision = -1
+      end>
+    Active = True
+    Database = PQConnection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select * from visitors;'
+    )
+    Params = <>
+    left = 166
+    top = 80
+  end
+  object DbChartSource2: TDbChartSource
+    DataSource = DataSource2
+    FieldText = 'visitor_name'
+    FieldX = 'id'
+    FieldY = 'phone'
+    left = 166
+    top = 152
+  end
+  object DataSource2: TDataSource
+    DataSet = SQLQuery2
+    left = 166
+    top = 224
+  end
+  object SQLQuery3: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'book_name'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'visitor_name'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'rent_start'
+        DataType = ftString
+        Precision = -1
+        Size = 8192
+      end    
+      item
+        Name = 'rent_end'
+        DataType = ftString
+        Precision = -1
+        Size = 8192
+      end>
+    Active = True
+    Database = PQConnection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select * from rent;'
+    )
+    Params = <>
+    left = 256
+    top = 80
+  end
+  object DataSource3: TDataSource
+    DataSet = SQLQuery3
+    left = 256
+    top = 224
+  end
+  object DbChartSource3: TDbChartSource
+    DataSource = DataSource3
+    FieldText = 'book_name'
+    FieldX = 'rent_start'
+    FieldY = 'rent_end'
+    left = 256
+    top = 152
+  end
+end

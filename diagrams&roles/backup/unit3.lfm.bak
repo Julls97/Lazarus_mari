@@ -1,0 +1,9 @@
+object SettingsForm: TSettingsForm
+  Left = 447
+  Height = 240
+  Top = 389
+  Width = 320
+  Caption = 'SettingsForm'
+  OnCreate = FormCreate
+  LCLVersion = '1.8.4.0'
+end
