@@ -9,7 +9,7 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms, tachartlazaruspkg, Unit1, Unit2, Unit3,
     fpspreadsheet, fpsTypes, xlsbiff8, fpsutils,
-  sysutils, LCLTranslator
+  sysutils, LCLTranslator, Unit4
   { you can add units after this };
 
 {$R *.res}
@@ -43,6 +43,7 @@ begin
  // Application.CreateForm(TForm1, Form1);
   Application.CreateForm(TLoginForm, LoginForm);
   Application.CreateForm(TSettingsForm, SettingsForm);
+  Application.CreateForm(TMainForm, MainForm);
   Application.Run;
 end.
 

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Menus,
-  Unit3,
+  Unit3,   Unit4,
   LCLProc, LazHelpHTML, Buttons, StdCtrls, ExtCtrls, UTF8Process
   ;
 
@@ -15,7 +15,6 @@ type
   { TLoginForm }
 
   TLoginForm = class(TForm)
-    BitBtnF1: TBitBtn;
     BitBtnCancel: TBitBtn;
     BitBtnOK: TBitBtn;
     BitBtnSettings: TBitBtn;
@@ -61,9 +60,9 @@ end;
 
 procedure TLoginForm.BitBtnOKClick(Sender: TObject);
 begin
-      //MainForm.PQConnection1.UserName := EditLogin.Text;
-      //MainForm.PQConnection1.Password := EditPassword.Text;
-      //MainForm.Show();
+      MainForm.PQConnection1.UserName := EditLogin.Text;
+      MainForm.PQConnection1.Password := EditPassword.Text;
+      MainForm.Show();
       Hide();
 end;
 

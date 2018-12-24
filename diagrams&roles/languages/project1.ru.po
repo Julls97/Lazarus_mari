@@ -1,0 +1,159 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: tloginform.bitbtncancel.caption
+msgid "Cancel"
+msgstr ""
+
+#: tloginform.bitbtnok.caption
+msgid "OK"
+msgstr ""
+
+#: tloginform.bitbtnsettings.caption
+msgid "Settings"
+msgstr ""
+
+#: tloginform.caption
+msgid "LoginForm"
+msgstr ""
+
+#: tloginform.login.caption
+msgid "Login"
+msgstr ""
+
+#: tloginform.password.caption
+msgid "Password"
+msgstr ""
+
+#: tmainform.buttonadduser.caption
+msgid "Add User"
+msgstr "Добавить пользователя"
+
+#: tmainform.buttonchangeuserpassword.caption
+msgid "Change Password"
+msgstr "Изменить пароль"
+
+#: tmainform.buttondeleteuser.caption
+msgid "Delete User"
+msgstr "Удалить пользователя"
+
+#: tmainform.buttonrenameuser.caption
+msgid "Rename User"
+msgstr "Переименовать пользователя"
+
+#: tmainform.buttonreport.caption
+msgid "Report"
+msgstr "Отчет"
+
+#: tmainform.caption
+msgid "MainForm"
+msgstr ""
+
+#: tmainform.help.text
+msgid "Help"
+msgstr ""
+
+#: tmainform.radiogroupusersroles.caption
+msgid "RadioGroup"
+msgstr ""
+
+#: tmainform.tabsheet1.caption
+msgid "TabSheet1"
+msgstr ""
+
+#: tmainform.tabsheet2.caption
+msgid "TabSheet2"
+msgstr ""
+
+#: tsettingsform.caption
+msgid "SettingsForm"
+msgstr "Настройки"
+
+#: tsettingsform.colorbutton.caption
+msgid "Color"
+msgstr "Цвет"
+
+#: tsettingsform.defaultcolorbutton.caption
+msgid "Default Color"
+msgstr "Цвет по умолчанию"
+
+#: tsettingsform.fontbutton.caption
+msgid "Font"
+msgstr "Шрифт"
+
+#: tsettingsform.language.caption
+msgid "Language"
+msgstr "Язык"
+
+#: tsettingsform.resetbgimagebutton.caption
+msgid "Reset BG Image"
+msgstr "Фон по умолчанию"
+
+#: tsettingsform.setbgimagebutton.caption
+msgid "Set BG Image"
+msgstr "Установить фон. изобр."
+
+#: unit2.messagerestartprogramafterchangelanguage
+msgid "The application must be restarted to change the interface language!"
+msgstr "Приложение должно быть перезапущено, чтобы изменить язык интерфейса!"
+
+#: unit2.radiogrouplanguageenglish
+msgctxt "unit2.radiogrouplanguageenglish"
+msgid "English"
+msgstr "Английский"
+
+#: unit2.radiogrouplanguagerussian
+msgctxt "unit2.radiogrouplanguagerussian"
+msgid "Russian"
+msgstr "Русский"
+
+#: unit3.messageaddusercaption
+msgid "Add user"
+msgstr "Добавить пользователя"
+
+#: unit3.messageaddusertext
+msgid "Enter user name"
+msgstr "Введите новое имя пользователя"
+
+#: unit3.messagechangepasswordcaption
+msgid "Change password"
+msgstr "Изменить пароль"
+
+#: unit3.messagechangepasswordtext
+msgid "Enter new password"
+msgstr "Введите новый пароль"
+
+#: unit3.messagedeleteusercaption
+msgid "Delete user"
+msgstr "Удалить пользователя"
+
+#: unit3.messagedeleteusertext
+msgid "Are you sure?"
+msgstr "Вы уверены?"
+
+#: unit3.messagerenameusercaption
+msgid "Rename user"
+msgstr "Переименовать пользователя"
+
+#: unit3.messagerenameusertext
+msgid "Enter new user name"
+msgstr "Введите новое имя пользователя"
+
+#: unit3.radiogroupusersrolesadmin
+#, fuzzy
+msgctxt "unit3.radiogroupusersrolesadmin"
+msgid "Admin"
+msgstr "Администратор"
+
+#: unit3.radiogroupusersrolesoperator
+#, fuzzy
+msgctxt "unit3.radiogroupusersrolesoperator"
+msgid "Operator"
+msgstr "Оператор"
+
+#: unit3.radiogroupusersrolesuser
+#, fuzzy
+msgctxt "unit3.radiogroupusersrolesuser"
+msgid "User"
+msgstr "Пользователь"
+

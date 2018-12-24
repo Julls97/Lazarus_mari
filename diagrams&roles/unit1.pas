@@ -20,16 +20,10 @@ type
     Chart2PieSeries1: TPieSeries;
     Chart3: TChart;
     Chart3LineSeries1: TLineSeries;
-    DataSource1: TDataSource;
     DataSource2: TDataSource;
-    DataSource3: TDataSource;
-    DbChartSource1: TDbChartSource;
     DbChartSource2: TDbChartSource;
-    DbChartSource3: TDbChartSource;
     PQConnection1: TPQConnection;
-    SQLQuery1: TSQLQuery;
     SQLQuery2: TSQLQuery;
-    SQLQuery3: TSQLQuery;
     SQLTransaction1: TSQLTransaction;
   private
 

@@ -17,38 +17,38 @@ type
   { TForm1 }
 
   TForm1 = class(TForm)
-    DataSourceBooks: TDataSource;
+    DataSourceAudio: TDataSource;
     DataSourceVisitors: TDataSource;
     DataSourceRent: TDataSource;
     DBGrid1: TDBGrid;
     DBNavigator1: TDBNavigator;
-    frDBDataSetBooks: TfrDBDataSet;
+    frDBDataSetAudio: TfrDBDataSet;
     frDBDataSetVisitors: TfrDBDataSet;
     frDBDataSetRent: TfrDBDataSet;
-    frReportBooks: TfrReport;
+    frReportAudio: TfrReport;
     frReportVisitors: TfrReport;
     frReportRent: TfrReport;
     MainMenu1: TMainMenu;
     Export: TMenuItem;
     Import: TMenuItem;
     OpenDialogExcel: TOpenDialog;
-    ReportBooks: TMenuItem;
+    ReportAudio: TMenuItem;
     ReportVisitors: TMenuItem;
     ReportRent: TMenuItem;
     PQConnection1: TPQConnection;
     SaveDialogExcel: TSaveDialog;
-    SQLQueryBooks: TSQLQuery;
+    SQLQueryAudio: TSQLQuery;
     SQLQueryVisitors: TSQLQuery;
     SQLQueryRent: TSQLQuery;
     SQLTransaction1: TSQLTransaction;
     procedure ReportRentClick(Sender: TObject);
     procedure ReportVisitorsClick(Sender: TObject);
-    procedure ReportBooksClick(Sender: TObject);
+    procedure ReportAudioClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
 
     procedure ExcelExportMenuItemClick(Sender: TObject);
     procedure ExcelImportMenuItemClick(Sender: TObject);
-    procedure SQLQueryBooksAfterPost(DataSet: TDataSet);
+    procedure SQLQueryAudioAfterPost(DataSet: TDataSet);
 
   private
     procedure RefreshSql();
@@ -66,10 +66,10 @@ implementation
 
 { TForm1 }
 
-procedure TForm1.ReportBooksClick(Sender: TObject);
+procedure TForm1.ReportAudioClick(Sender: TObject);
 begin
-  self.frReportBooks.LoadFromFile('report_books.lrf');
-  self.frReportBooks.ShowReport();
+  self.frReportAudio.LoadFromFile('report_audio.lrf');
+  self.frReportAudio.ShowReport();
 end;
 
 procedure TForm1.ReportVisitorsClick(Sender: TObject);
@@ -86,8 +86,8 @@ end;
 
 procedure TForm1.RefreshSql();
 begin
-  self.SQLQueryBooks.Close();
-  self.SQLQueryBooks.Open();
+  self.SQLQueryAudio.Close();
+  self.SQLQueryAudio.Open();
   self.SQLQueryVisitors.Close();
   self.SQLQueryVisitors.Open();
   self.SQLQueryRent.Close();
@@ -147,7 +147,7 @@ begin
     header.Add('Name');
     header.Add('Author');
     header.Add('Genre');
-    DataSourceToWorksheet(self.DataSourceBooks, MyWorkBook.AddWorksheet('Books'), header);
+    DataSourceToWorksheet(self.DataSourceAudio, MyWorkBook.AddWorksheet('Audio'), header);
 
     MyWorkBook.WriteToFile(self.SaveDialogExcel.FileName, sfExcel8, True);
   end;
@@ -169,30 +169,30 @@ begin
     for worksheetIndex := 0 to MyWorkbook.GetWorksheetCount() - 1 do
     begin
       MyWorksheet := MyWorkbook.GetWorksheetByIndex(worksheetIndex);
-      if(MyWorksheet.Name = 'Books') then
+      if(MyWorksheet.Name = 'Audio') then
       for row := 1 to MyWorksheet.GetLastRowIndex do
       begin
         if (MyWorksheet.ReadAsText(row, 1) = '') or
            (MyWorksheet.ReadAsText(row, 2) = '') or
            (MyWorksheet.ReadAsText(row, 3) = '') then
            continue;
-        self.DataSourceBooks.DataSet.Insert();
-        self.DataSourceBooks.DataSet.Fields[1].AsString := MyWorksheet.ReadAsText(row, 1); // name
-        self.DataSourceBooks.DataSet.Fields[2].AsString := MyWorksheet.ReadAsText(row, 2); // author
-        self.DataSourceBooks.DataSet.Fields[3].AsString := MyWorksheet.ReadAsText(row, 3); // genre
+        self.DataSourceAudio.DataSet.Insert();
+        self.DataSourceAudio.DataSet.Fields[1].AsString := MyWorksheet.ReadAsText(row, 1); // name
+        self.DataSourceAudio.DataSet.Fields[2].AsString := MyWorksheet.ReadAsText(row, 2); // author
+        self.DataSourceAudio.DataSet.Fields[3].AsString := MyWorksheet.ReadAsText(row, 3); // genre
       end;
 
     end;
   end;
 
-  if(self.DataSourceBooks.DataSet.State = dsInsert) then
-  self.DataSourceBooks.DataSet.Post();
+  if(self.DataSourceAudio.DataSet.State = dsInsert) then
+  self.DataSourceAudio.DataSet.Post();
 
 end;
 
-procedure TForm1.SQLQueryBooksAfterPost(DataSet: TDataSet);
+procedure TForm1.SQLQueryAudioAfterPost(DataSet: TDataSet);
 begin
-  self.SQLQueryBooks.ApplyUpdates(0);
+  self.SQLQueryAudio.ApplyUpdates(0);
   self.SQLTransaction1.Commit();
   self.RefreshSql();
 end;

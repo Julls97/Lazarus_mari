@@ -1,0 +1,13 @@
+{"version":1,"strings":[
+{"hash":174575026,"name":"unit4.messageaddusercaption","sourcebytes":[65,100,100,32,117,115,101,114],"value":"Add user"},
+{"hash":109279477,"name":"unit4.messageaddusertext","sourcebytes":[69,110,116,101,114,32,117,115,101,114,32,110,97,109,101],"value":"Enter user name"},
+{"hash":15202308,"name":"unit4.messagechangepasswordcaption","sourcebytes":[67,104,97,110,103,101,32,112,97,115,115,119,111,114,100],"value":"Change password"},
+{"hash":186908068,"name":"unit4.messagechangepasswordtext","sourcebytes":[69,110,116,101,114,32,110,101,119,32,112,97,115,115,119,111,114,100],"value":"Enter new password"},
+{"hash":53415234,"name":"unit4.messagerenameusercaption","sourcebytes":[82,101,110,97,109,101,32,117,115,101,114],"value":"Rename user"},
+{"hash":81199253,"name":"unit4.messagerenameusertext","sourcebytes":[69,110,116,101,114,32,110,101,119,32,117,115,101,114,32,110,97,109,101],"value":"Enter new user name"},
+{"hash":171772674,"name":"unit4.messagedeleteusercaption","sourcebytes":[68,101,108,101,116,101,32,117,115,101,114],"value":"Delete user"},
+{"hash":268257455,"name":"unit4.messagedeleteusertext","sourcebytes":[65,114,101,32,121,111,117,32,115,117,114,101,63],"value":"Are you sure?"},
+{"hash":4699134,"name":"unit4.radiogroupusersrolesadmin","sourcebytes":[65,100,109,105,110],"value":"Admin"},
+{"hash":113807362,"name":"unit4.radiogroupusersrolesoperator","sourcebytes":[79,112,101,114,97,116,111,114],"value":"Operator"},
+{"hash":379330,"name":"unit4.radiogroupusersrolesuser","sourcebytes":[85,115,101,114],"value":"User"}
+]}

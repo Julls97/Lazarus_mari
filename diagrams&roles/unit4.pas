@@ -5,9 +5,12 @@ unit Unit4;
 interface
 
 uses
-  Classes, SysUtils, db, sqldb, pqconnection, FileUtil, //LR_Class, //LR_DBSet,
+  Classes, SysUtils, db, sqldb, pqconnection, FileUtil, LR_Class, LR_DBSet, //LR_Class, LR_DBSet,
   Forms, Controls, Graphics, Dialogs, ComCtrls, DbCtrls, DBGrids, StdCtrls,
-  ExtCtrls, LazHelpHTML // , Unit2, Unit3
+  ExtCtrls, LazHelpHTML, Menus, Unit3,
+
+  Types,
+  fpstypes, fpspreadsheet, fpsallformats, laz_fpspreadsheet, xlsbiff8, fpsutils
   ;
 
 type
@@ -22,32 +25,36 @@ type
     ButtonAddUser: TButton;
     DataSourceUsers: TDataSource;
     DataSourceRoles: TDataSource;
-    DataSourceBooks: TDataSource;
+    DataSourceAudio: TDataSource;
     DBGrid1: TDBGrid;
     DBNavigator1: TDBNavigator;
+    frDBDataSet1: TfrDBDataSet;
+    frReportAudio: TfrReport;
+    ImageBackground: TImage;
     ListBoxUsers: TListBox;
+    PageControl1: TPageControl;
     PQConnection1: TPQConnection;
     RadioGroupUsersRoles: TRadioGroup;
     SQLQueryUsers: TSQLQuery;
     SQLQueryRoles: TSQLQuery;
-    SQLQueryBooks: TSQLQuery;
+    SQLQueryAudio: TSQLQuery;
     SQLTransaction1: TSQLTransaction;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
 
-
-    procedure FormClose(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure ButtonAddUserClick(Sender: TObject);
     procedure ButtonChangeUserPasswordClick(Sender: TObject);
     procedure ButtonDeleteUserClick(Sender: TObject);
     procedure ButtonRenameUserClick(Sender: TObject);
     procedure ButtonReportClick(Sender: TObject);
-    procedure ImageBackgroundClick(Sender: TObject);
-    procedure PageControl1Change(Sender: TObject);
-    procedure SQLQueryParentsAfterPost();
 
     procedure ListBoxUsersClick(Sender: TObject);
     procedure ListBoxUsersSelectionChange(Sender: TObject);
     procedure RadioGroupUsersRolesSelectionChanged(Sender: TObject);
+    procedure SQLQueryAudioAfterPost();
+
 
   private
     UserRole: string;
@@ -76,6 +83,11 @@ resourcestring
   RadioGroupUsersRolesOperator = 'Operator';
   RadioGroupUsersRolesUser = 'User';
 
+
+function pgroles_add(pg: TPQConnection; userName: string): boolean;
+function pgroles_rename(pg: TPQConnection; userNameOld, userNameNew: string): boolean;
+function pgroles_password(pg: TPQConnection; userName, password: string): boolean;
+function pgroles_delete(pg: TPQConnection; userName: string): boolean;
 implementation
 
 {$R *.lfm}
@@ -85,8 +97,8 @@ var
   i: integer;
   prevSelectedUser: integer;
 begin
-  SQLQueryBooks.Close();
-  SQLQueryBooks.Open();
+  SQLQueryAudio.Close();
+  SQLQueryAudio.Open();
 
   if (UserRole = 'role_admin') then
   begin
@@ -135,7 +147,7 @@ begin
   DBGrid1.AllowOutboundEvents := True;
 
   PQConnection1.Connected := True;
-  SQLQueryBooks.Active := True;
+  SQLQueryAudio.Active := True;
 
   SQLQueryRoles.ParamByName('username').AsString := PQConnection1.UserName;
   SQLQueryRoles.Active := True;
@@ -162,9 +174,9 @@ begin
   RefreshSql();
 end;
 
-procedure TMainForm.FormClose(Sender: TObject);
+procedure TMainForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
-  Application.Terminate();
+   Application.Terminate();
 end;
 
 procedure TMainForm.ButtonAddUserClick(Sender: TObject);
@@ -207,28 +219,13 @@ end;
 
 procedure TMainForm.ButtonReportClick(Sender: TObject);
 begin
-  frReportBooks.LoadFromFile('report_books.lrf');
-  self.frReportBooks.ShowReport();
+  frReportAudio.LoadFromFile('report_audio.lrf');
+  self.frReportAudio.ShowReport();
 end;
 
-procedure TMainForm.ImageBackgroundClick(Sender: TObject);
+procedure TMainForm.SQLQueryAudioAfterPost();
 begin
-
-end;
-
-procedure TMainForm.PageControl1Change(Sender: TObject);
-begin
-
-end;
-
-procedure TMainForm.SQLQueryParentsAfterPost();
-begin
-
-end;
-
-procedure TMainForm.SQLQueryBooksAfterPost();
-begin
-  SQLQueryBooks.ApplyUpdates(0);
+  SQLQueryAudio.ApplyUpdates(0);
   SQLTransaction1.Commit();
   RefreshSql();
 end;
@@ -313,6 +310,57 @@ begin
       SQLTransaction1.Commit();
       RefreshSql();
     end;
+end;
+
+function pgroles_add(pg: TPQConnection; userName: string): boolean;
+  begin
+    if (userName <> '') then
+    begin
+      pg.ExecuteDirect('CREATE USER "' + userName + '";');
+      pg.Transaction.Commit();
+      Result := True;
+    end
+    else
+      Result := False;
+  end;
+
+  function pgroles_rename(pg: TPQConnection;
+    userNameOld, userNameNew: string): boolean;
+  begin
+    if (userNameOld <> '') and (userNameNew <> '') then
+    begin
+      pg.ExecuteDirect('ALTER ROLE "' + userNameOld + '" RENAME TO "' +
+        userNameNew + '";');
+      pg.Transaction.Commit();
+      Result := True;
+    end
+    else
+      Result := False;
+  end;
+
+  function pgroles_password(pg: TPQConnection;
+    userName, password: string): boolean;
+  begin
+    if (userName <> '') and (password <> '') then
+    begin
+      pg.ExecuteDirect('ALTER ROLE "' + userName + '" PASSWORD ''' + password + ''';');
+      pg.Transaction.Commit();
+      Result := True;
+    end
+    else
+      Result := False;
+  end;
+
+  function pgroles_delete(pg: TPQConnection; userName: string): boolean;
+  begin
+    if (userName <> '') then
+    begin
+      pg.ExecuteDirect('DROP ROLE "' + userName + '";');
+      pg.Transaction.Commit();
+      Result := True;
+    end
+    else
+      Result := False;
 end;
 
 end.

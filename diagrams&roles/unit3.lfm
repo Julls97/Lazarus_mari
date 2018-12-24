@@ -9,47 +9,47 @@ object SettingsForm: TSettingsForm
   OnCreate = FormCreate
   LCLVersion = '1.8.4.0'
   object FontButton: TButton
-    Left = 40
+    Left = 10
     Height = 25
     Top = 32
-    Width = 75
-    Caption = 'FontButton'
+    Width = 150
+    Caption = 'Font'
     OnClick = FontButtonClick
     TabOrder = 0
   end
   object ColorButton: TButton
-    Left = 40
+    Left = 10
     Height = 25
     Top = 60
-    Width = 75
-    Caption = 'ColorButton'
+    Width = 150
+    Caption = 'Color'
     OnClick = ColorButtonClick
     TabOrder = 1
   end
   object DefaultColorButton: TButton
-    Left = 40
+    Left = 10
     Height = 25
     Top = 88
-    Width = 75
-    Caption = 'DefaultColorButton'
+    Width = 150
+    Caption = 'DefaultColor'
     OnClick = DefaultColorButtonClick
     TabOrder = 2
   end
   object SetBGImageButton: TButton
-    Left = 40
+    Left = 10
     Height = 25
     Top = 116
-    Width = 75
-    Caption = 'SetBGImageButton'
+    Width = 150
+    Caption = 'SetBGImage'
     OnClick = SetBGImageButtonClick
     TabOrder = 3
   end
   object ResetBGImageButton: TButton
-    Left = 40
+    Left = 10
     Height = 25
     Top = 144
-    Width = 75
-    Caption = 'ResetBGImageButton'
+    Width = 150
+    Caption = 'ResetBGImage'
     OnClick = ResetBGImageButtonClick
     TabOrder = 4
   end
@@ -70,10 +70,10 @@ object SettingsForm: TSettingsForm
     ShowButtons = [pbOK]
   end
   object Language: TRadioGroup
-    Left = 160
+    Left = 180
     Height = 137
     Top = 32
-    Width = 233
+    Width = 200
     AutoFill = True
     Caption = 'Language'
     ChildSizing.LeftRightSpacing = 6
