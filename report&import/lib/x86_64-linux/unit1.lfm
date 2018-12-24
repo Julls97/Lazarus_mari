@@ -1,0 +1,256 @@
+object Form1: TForm1
+  Left = 320
+  Height = 551
+  Top = 176
+  Width = 696
+  Caption = 'Form1'
+  ClientHeight = 524
+  ClientWidth = 696
+  Menu = MainMenu1
+  LCLVersion = '1.8.4.0'
+  object DBNavigator1: TDBNavigator
+    Left = 0
+    Height = 25
+    Top = 0
+    Width = 696
+    Align = alTop
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 25
+    ClientWidth = 696
+    DataSource = DataSourceBooks
+    Options = []
+    TabOrder = 0
+  end
+  object DBGrid1: TDBGrid
+    Left = 0
+    Height = 375
+    Top = 25
+    Width = 696
+    Align = alTop
+    AutoFillColumns = True
+    Color = clWindow
+    Columns = <>
+    DataSource = DataSourceBooks
+    TabOrder = 1
+  end
+  object PQConnection1: TPQConnection
+    Connected = True
+    LoginPrompt = False
+    DatabaseName = 'bibl'
+    KeepConnection = True
+    Password = 'postgres'
+    Transaction = SQLTransaction1
+    UserName = 'postgres'
+    HostName = 'localhost'
+    left = 152
+    top = 96
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = True
+    Database = PQConnection1
+    left = 152
+    top = 16
+  end
+  object MainMenu1: TMainMenu
+    left = 40
+    top = 24
+    object ReportBooks: TMenuItem
+      Caption = 'ReportBooks'
+      OnClick = ReportBooksClick
+    end
+    object ReportVisitors: TMenuItem
+      Caption = 'ReportVisitors'
+      OnClick = ReportVisitorsClick
+    end
+    object ReportRent: TMenuItem
+      Caption = 'ReportRent'
+      OnClick = ReportRentClick
+    end
+    object Export: TMenuItem
+      Caption = 'Export'
+      OnClick = ExcelExportMenuItemClick
+    end
+    object Import: TMenuItem
+      Caption = 'Import'
+      OnClick = ExcelImportMenuItemClick
+    end
+  end
+  object frReportBooks: TfrReport
+    Dataset = frDBDataSetBooks
+    InitialZoom = pzDefault
+    Options = []
+    PreviewButtons = [pbZoom, pbLoad, pbSave, pbPrint, pbFind, pbHelp, pbExit]
+    DataType = dtDataSet
+    left = 272
+    top = 48
+  end
+  object frDBDataSetBooks: TfrDBDataSet
+    DataSet = SQLQueryBooks
+    left = 424
+    top = 48
+  end
+  object frReportVisitors: TfrReport
+    Dataset = frDBDataSetVisitors
+    InitialZoom = pzDefault
+    Options = []
+    PreviewButtons = [pbZoom, pbLoad, pbSave, pbPrint, pbFind, pbHelp, pbExit]
+    DataType = dtDataSet
+    left = 272
+    top = 128
+  end
+  object frDBDataSetVisitors: TfrDBDataSet
+    DataSet = SQLQueryVisitors
+    left = 424
+    top = 128
+  end
+  object frReportRent: TfrReport
+    Dataset = frDBDataSetRent
+    InitialZoom = pzDefault
+    Options = []
+    PreviewButtons = [pbZoom, pbLoad, pbSave, pbPrint, pbFind, pbHelp, pbExit]
+    DataType = dtDataSet
+    left = 272
+    top = 208
+  end
+  object frDBDataSetRent: TfrDBDataSet
+    DataSet = SQLQueryRent
+    left = 424
+    top = 208
+  end
+  object SQLQueryBooks: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'book_name'
+        DataType = ftString
+        Precision = -1
+        Size = 8192
+      end    
+      item
+        Name = 'author'
+        DataType = ftString
+        Precision = -1
+        Size = 8192
+      end    
+      item
+        Name = 'genre'
+        DataType = ftString
+        Precision = -1
+        Size = 8192
+      end>
+    Active = True
+    AfterPost = SQLQueryBooksAfterPost
+    Database = PQConnection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select * from books;'
+    )
+    Params = <>
+    left = 24
+    top = 232
+  end
+  object DataSourceBooks: TDataSource
+    DataSet = SQLQueryBooks
+    left = 128
+    top = 232
+  end
+  object SQLQueryVisitors: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'visitor_name'
+        DataType = ftString
+        Precision = -1
+        Size = 8192
+      end    
+      item
+        Name = 'email'
+        DataType = ftString
+        Precision = -1
+        Size = 8192
+      end    
+      item
+        Name = 'phone'
+        DataType = ftInteger
+        Precision = -1
+      end>
+    Active = True
+    Database = PQConnection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select * from visitors;'
+    )
+    Params = <>
+    left = 24
+    top = 309
+  end
+  object DataSourceVisitors: TDataSource
+    DataSet = SQLQueryVisitors
+    left = 140
+    top = 309
+  end
+  object SQLQueryRent: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'book_name'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'visitor_name'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'rent_start'
+        DataType = ftString
+        Precision = -1
+        Size = 8192
+      end    
+      item
+        Name = 'rent_end'
+        DataType = ftString
+        Precision = -1
+        Size = 8192
+      end>
+    Active = True
+    Database = PQConnection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select * from rent;'
+    )
+    Params = <>
+    left = 35
+    top = 382
+  end
+  object DataSourceRent: TDataSource
+    DataSet = SQLQueryRent
+    left = 144
+    top = 382
+  end
+  object SaveDialogExcel: TSaveDialog
+    left = 338
+    top = 335
+  end
+  object OpenDialogExcel: TOpenDialog
+    left = 438
+    top = 356
+  end
+end
