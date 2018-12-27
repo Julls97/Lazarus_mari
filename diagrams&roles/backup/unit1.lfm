@@ -1,10 +1,10 @@
 object Form1: TForm1
-  Left = 438
-  Height = 566
-  Top = 151
+  Left = 608
+  Height = 583
+  Top = 148
   Width = 758
   Caption = 'Form1'
-  ClientHeight = 566
+  ClientHeight = 583
   ClientWidth = 758
   LCLVersion = '1.8.4.0'
   object Chart1: TChart
@@ -37,7 +37,7 @@ object Form1: TForm1
       'TAChart'
     )
     Title.Visible = True
-    Color = clGrayText
+    Color = clHighlightText
     object Chart1BarSeries1: TBarSeries
       Marks.Distance = 5
       Marks.LabelFont.Color = clBlack
@@ -140,59 +140,11 @@ object Form1: TForm1
     left = 160
     top = 16
   end
-  object SQLQuery1: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
-    FieldDefs = <    
-      item
-        Name = 'id'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'book_name'
-        DataType = ftString
-        Precision = -1
-        Size = 8192
-      end    
-      item
-        Name = 'author'
-        DataType = ftString
-        Precision = -1
-        Size = 8192
-      end    
-      item
-        Name = 'genre'
-        DataType = ftString
-        Precision = -1
-        Size = 8192
-      end>
-    Database = PQConnection1
-    Transaction = SQLTransaction1
-    SQL.Strings = (
-      'SELECT * FROM books;'
-    )
-    Params = <>
-    left = 56
-    top = 80
-  end
   object SQLTransaction1: TSQLTransaction
-    Active = False
+    Active = True
     Database = PQConnection1
     left = 58
     top = 16
-  end
-  object DbChartSource1: TDbChartSource
-    DataSource = DataSource1
-    FieldText = 'book_name'
-    FieldX = 'genre'
-    FieldY = 'id'
-    left = 56
-    top = 152
-  end
-  object DataSource1: TDataSource
-    DataSet = SQLQuery1
-    left = 56
-    top = 224
   end
   object SQLQuery2: TSQLQuery
     IndexName = 'DEFAULT_ORDER'
@@ -215,10 +167,11 @@ object Form1: TForm1
         Size = 8192
       end    
       item
-        Name = 'phone'
+        Name = 'count_audios'
         DataType = ftInteger
         Precision = -1
       end>
+    Active = True
     Database = PQConnection1
     Transaction = SQLTransaction1
     SQL.Strings = (
@@ -232,7 +185,7 @@ object Form1: TForm1
     DataSource = DataSource2
     FieldText = 'visitor_name'
     FieldX = 'id'
-    FieldY = 'phone'
+    FieldY = 'count_audios'
     left = 166
     top = 152
   end
@@ -240,52 +193,5 @@ object Form1: TForm1
     DataSet = SQLQuery2
     left = 166
     top = 224
-  end
-  object SQLQuery3: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
-    FieldDefs = <    
-      item
-        Name = 'book_name'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'visitor_name'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'rent_start'
-        DataType = ftString
-        Precision = -1
-        Size = 8192
-      end    
-      item
-        Name = 'rent_end'
-        DataType = ftString
-        Precision = -1
-        Size = 8192
-      end>
-    Database = PQConnection1
-    Transaction = SQLTransaction1
-    SQL.Strings = (
-      'select * from rent;'
-    )
-    Params = <>
-    left = 256
-    top = 80
-  end
-  object DataSource3: TDataSource
-    DataSet = SQLQuery3
-    left = 256
-    top = 224
-  end
-  object DbChartSource3: TDbChartSource
-    DataSource = DataSource3
-    FieldText = 'book_name'
-    FieldX = 'rent_start'
-    FieldY = 'rent_end'
-    left = 256
-    top = 152
   end
 end

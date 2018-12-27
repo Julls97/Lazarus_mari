@@ -1,10 +1,10 @@
 object Form1: TForm1
-  Left = 438
-  Height = 566
-  Top = 151
+  Left = 590
+  Height = 583
+  Top = 148
   Width = 758
   Caption = 'Form1'
-  ClientHeight = 566
+  ClientHeight = 583
   ClientWidth = 758
   LCLVersion = '1.8.4.0'
   object Chart1: TChart
@@ -37,7 +37,7 @@ object Form1: TForm1
       'TAChart'
     )
     Title.Visible = True
-    Color = clGrayText
+    Color = clHighlightText
     object Chart1BarSeries1: TBarSeries
       Marks.Distance = 5
       Marks.LabelFont.Color = clBlack
@@ -167,7 +167,7 @@ object Form1: TForm1
         Size = 8192
       end    
       item
-        Name = 'phone'
+        Name = 'count_audios'
         DataType = ftInteger
         Precision = -1
       end>
@@ -185,7 +185,7 @@ object Form1: TForm1
     DataSource = DataSource2
     FieldText = 'visitor_name'
     FieldX = 'id'
-    FieldY = 'phone'
+    FieldY = 'count_audios'
     left = 166
     top = 152
   end

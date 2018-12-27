@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 417
+  Left = 131
   Height = 347
-  Top = 262
+  Top = 193
   Width = 488
   Caption = 'MainForm'
   ClientHeight = 347
@@ -14,9 +14,9 @@ object MainForm: TMainForm
     Height = 347
     Top = 0
     Width = 488
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'TabSheet1'
@@ -79,7 +79,7 @@ object MainForm: TMainForm
         Height = 25
         Top = 44
         Width = 150
-        Caption = 'ButtonRenameUser'
+        Caption = 'RenameUser'
         OnClick = ButtonRenameUserClick
         TabOrder = 0
       end
@@ -88,7 +88,7 @@ object MainForm: TMainForm
         Height = 25
         Top = 80
         Width = 150
-        Caption = 'ButtonDeleteUser'
+        Caption = 'DeleteUser'
         OnClick = ButtonDeleteUserClick
         TabOrder = 1
       end
@@ -97,7 +97,7 @@ object MainForm: TMainForm
         Height = 25
         Top = 120
         Width = 150
-        Caption = 'ButtonChangeUserPassword'
+        Caption = 'Password'
         OnClick = ButtonChangeUserPasswordClick
         TabOrder = 2
       end
@@ -106,7 +106,7 @@ object MainForm: TMainForm
         Height = 25
         Top = 8
         Width = 150
-        Caption = 'ButtonAddUser'
+        Caption = 'AddUser'
         OnClick = ButtonAddUserClick
         TabOrder = 3
       end
